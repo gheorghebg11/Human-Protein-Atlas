@@ -1,0 +1,40 @@
+TODO
+
+on Laptop:
+- WE RE CALLING THE EXTRACT BATCH TWICE ? ONCE FOR [0] ONCE for [1] ?
+- plot neurons. Dead units ? Exploding/vanishing gradient ?
+- init weights ?
+- when has a NN converged ?
+- find a smart way to choose batches. It needs some randomness, so we'll have that too, but say, every other batch, have a balanced batch with at least an element from each class chosen.
+- on some graphs I have a convex f1-score, weird ?
+- look at typical cost graphs, same as mine ? need to forget about the first epoch and only zoom in the graph after that ?
+- create an ensemble from the prediction csv!
+- Count # param : see https://stackoverflow.com/questions/38160940/how-to-count-total-number-of-trainable-parameters-in-a-tensorflow-model or https://www.quora.com/What-is-the-best-way-to-count-the-total-number-of-parameters-in-a-model-in-TensorFlow
+- loss goes to zero too fast ?
+- add data std with pixel mean, although seems like not much improvement
+- Loading images faster: see https://www.kaggle.com/rejpalcz/input-preprocessing-for-fast-data-loading
+- CV
+	- my CV is not good, as I keep for test a part of images after having data augmented, so some in CV are in training. Remove some images first, then data augment.
+- Loss
+	- Use the F1 metric directly (modify to be diff) see https://www.kaggle.com/rejpalcz/best-loss-function-for-f1-score-metric
+- Threshold
+	- if ther is no label that makes the cut, choose the label with highest score (as there is always 1 label). Actually first count if too many empty prediction, and 		   maybe do a test to see if impoves score or not...
+	- we can also have a different threshold for every class. We could learn it by finding the F1 score of each class individually, and set it at half of this.
+- Saving the model
+	- For saving : save the graphs with the model too!
+	- add stop/continue training
+	- write function calculating the size of the network and add in saving file
+
+
+on Desktop:
+- try without dropout
+- change the image resolution. Maybe it has to be proportional with the size of the net ? i.e., 512 requires bigger net.
+- Try to go as deep as it improves, after that add identity shortcuts
+- as the network gets deeper, use BN to avoid vanishing grads
+- gradually increase the batch size in order to remove noise. This is pretty similar to reducing the learning rate.
+- try the 1-1 conv layer at the end - look at Striving for simplicity
+- try different channels
+
+TODO-NOW:
+- start small : Make a small data set by picking all the rares and filling in with the other ones
+- add zoom in of loss, forget the first steps
